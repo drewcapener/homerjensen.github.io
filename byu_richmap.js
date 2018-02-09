@@ -10,19 +10,37 @@ var onBuildingClick = function() {
 	document.getElementById("_wsc").classList.add("card");
 	document.getElementById("_wsc").innerHTML = "This is the Wilk!";
 	//img functionality
+	//form
 	var wscimgform = document.createElement("form");
 	var wscimginput = document.createElement("input");
-	wscimgform.appendChild(wscimginput);
-	_wsc.appendChild(wscimgform);
 	wscimginput.setAttribute("id", "wscimginput");
 	wscimginput.setAttribute("type", "file");
 	wscimginput.setAttribute("accept", "image/*");
+	wscimginput.addEventListener("change", showImage);
+
+	wscimgform.appendChild(wscimginput);
+
+	//img
 	var wscimg = document.createElement("img");
-	_wsc.appendChild(wscimg);
-	wscimg.setAttribute("src", "wscimginput");
+	wscimg.setAttribute("id", "wscimg")
 	wscimg.setAttribute("position", "absolute");
 	wscimg.setAttribute("height", "80%");
 	wscimg.setAttribute("top", "20%");
+
+	wscimgform.appendChild(wscimg);
+
+	_wsc.appendChild(wscimgform);
+
+	//display img
+	function showImage(ev) {
+		if (ev.target.files && ev.target.files[0]) {
+			var readImage = new FileReader();
+			readImage.onload = function (e) {
+				document.getElementById("wscimg").setAttribute("src", e.target.result);
+			}
+			readImage.readAsDataURL(ev.target.files[0]);
+		}
+	}
 }
 //adds event listener to marker
 wsc.addEventListener("click", onBuildingClick);
