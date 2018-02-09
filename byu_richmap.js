@@ -27,7 +27,6 @@ var onBuildingClick = function() {
 	wscimg.setAttribute("height", "80%");
 	wscimg.setAttribute("top", "20%");
 
-	wscimgform.appendChild(wscimg);
 
 	_wsc.appendChild(wscimg);
 
