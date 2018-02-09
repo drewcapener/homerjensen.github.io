@@ -30,6 +30,7 @@ var onBuildingClick = function() {
 	wscimgform.appendChild(wscimg);
 
 	_wsc.appendChild(wscimgform);
+	_wsc.appendChild(wscimg);
 
 	//display img
 	function showImage(ev) {
